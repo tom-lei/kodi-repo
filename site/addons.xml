@@ -24,6 +24,31 @@
         <fanart>fanart.jpg</fanart>
     </assets>
   </extension>
+</addon><addon id="plugin.video.simplitv_t" name="simpliTVᵀ" version="2026.11.23.3" provider-name="Tom, Publish3r, sunsettrack4">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="script.module.requests" />
+    <import addon="inputstream.adaptive" />
+    <import addon="script.module.tzlocal" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">simpliTVᵀ – live TV with programme guide</summary>
+    <summary lang="de_DE">simpliTVᵀ – Live-TV mit Programmführer</summary>
+    <description lang="en_GB">Streaming war noch nie so lässig. Live TV for simpliTV with a full programme guide, Catch-up and estimated rewind. Based on the simpliTV add-on by Publish3r and sunsettrack4.</description>
+    <description lang="de_DE">Streaming war noch nie so lässig. Live-TV für simpliTV mit vollständigem Programmführer, Catch-up und geschätztem Zurückspulen. Basiert auf dem simpliTV-Add-on von Publish3r und sunsettrack4.</description>
+    <disclaimer lang="en_GB">Unofficial add-on; not affiliated with the simpliTV service provider.</disclaimer>
+    <disclaimer lang="de_DE">Inoffizielles Add-on; keine Verbindung zum Anbieter von simpliTV.</disclaimer>
+    <license>GPL-3.0-or-later</license>
+    <language>en</language>
+    <platform>all</platform>
+    <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+    </assets>
+  </extension>
 </addon><addon id="repository.tom-lei" name="kodi-repo" version="1.0.0" provider-name="tom-lei">
   <requires>
     <import addon="xbmc.addon" version="12.0.0" />

@@ -10,14 +10,24 @@ Download the repository add-on ZIP:
 
 In Kodi, install that downloaded ZIP using **Install from zip file**, then
 choose **Install from repository → kodi-repo → Video add-ons → simpliTVᵀ**.
-The [download page](https://tom-lei.github.io/kodi-repo/) also links to the
-[simpliTVᵀ 2026.11.22 ZIP](https://tom-lei.github.io/kodi-repo/plugin.video.simplitv_t/plugin.video.simplitv_t-2026.11.22.zip).
+The [download page](https://tom-lei.github.io/kodi-repo/) lists each release.
+Direct downloads: [simpliTVᵀ 2026.11.23.3](https://tom-lei.github.io/kodi-repo/plugin.video.simplitv_t/plugin.video.simplitv_t-2026.11.23.3.zip) · [2026.11.22](https://tom-lei.github.io/kodi-repo/plugin.video.simplitv_t/plugin.video.simplitv_t-2026.11.22.zip).
 
-## simpliTVᵀ 2026.11.22 notes
+## simpliTVᵀ 2026.11.23.3 notes
 
-- One enlarged-preview session on Windows exited with an unexplained crash
-  (`0xC0000005`); subsequent runs did not establish its cause or crash safety.
-- Unencrypted streams, Android, and LibreELEC have not been tested.
+- Includes guide-background and recovery-menu fixes, plus programme-jump
+  handling for queued seeks, repeated taps, and near-boundary landings.
+- 141 offline tests passed. A synthetic retry and one real-provider retry
+  exercised two rapid Previous and Next commands while the first seek was
+  pending, advancing twice in both directions. Provider requests and player
+  readbacks completed within 2.8 seconds. These inputs used direct `onAction`
+  calls with injected context-menu choices, not physical remote/Kodi input
+  dispatch. EPG data and player readbacks were real; broadcast wall-clock
+  alignment was not independently measured. Near-boundary and tap-reversal
+  fixes were offline-tested only.
+- An earlier enlarged-preview session on Windows exited with an unexplained
+  crash (`0xC0000005`); its cause remains unknown.
+- Unencrypted streams, Android, and LibreELEC remain untested.
 - simpliTVᵀ is unofficial and based on the simpliTV add-on by Publish3r and
   sunsettrack4. Its source, license and credits are included in the release ZIP.
   The T-branded icon and fanart are derivatives of artwork included in the
