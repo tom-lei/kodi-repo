@@ -83,6 +83,26 @@ def write_bytes(path: Path, contents: bytes) -> None:
     path.write_bytes(contents)
 
 
+def write_package_artwork(output: Path, addon_id: str, package: bytes, addon_xml: bytes) -> None:
+    assets = ElementTree.fromstring(addon_xml).find("./extension[@point='xbmc.addon.metadata']/assets")
+    if assets is None:
+        return
+    with zipfile.ZipFile(io.BytesIO(package)) as archive:
+        for asset in assets:
+            if not asset.text:
+                continue
+            name = asset.text.strip()
+            path = PurePosixPath(name)
+            if path.is_absolute() or not path.parts or ".." in path.parts or "\\" in name:
+                raise ValueError(f"{addon_id}: invalid artwork path {name!r}")
+            archive_path = f"{addon_id}/{path.as_posix()}"
+            try:
+                data = archive.read(archive_path)
+            except KeyError as exc:
+                raise ValueError(f"{addon_id}: missing artwork {archive_path}") from exc
+            write_bytes(output / addon_id / Path(*path.parts), data)
+
+
 def build(output: Path) -> None:
     output.mkdir(parents=True, exist_ok=True)
     packages: dict[tuple[str, str], tuple[bytes, bytes]] = {}
@@ -111,6 +131,7 @@ def build(output: Path) -> None:
         filename = f"{addon_id}-{version}.zip"
         relative = Path(addon_id) / filename
         write_bytes(output / relative, package_bytes)
+        write_package_artwork(output, addon_id, package_bytes, addon_xml)
         write_bytes(
             output / f"{relative}.sha256",
             (hashlib.sha256(package_bytes).hexdigest() + "\n").encode("ascii"),
@@ -146,7 +167,7 @@ def make_index(packages: dict[tuple[str, str], tuple[bytes, bytes]]) -> bytes:
     <p><a href="{REPOSITORY_ID}/{REPOSITORY_ID}-{REPOSITORY_VERSION}.zip">repository.tom-lei-{REPOSITORY_VERSION}.zip</a></p>
     <p>Catalogue:</p>
     <ul>{package_list}</ul>
-    <p>Video add-ons are not published yet.</p>
+    <p>See <a href="https://github.com/tom-lei/kodi-repo">installation and release notes</a>.</p>
   </main>
 </body>
 </html>

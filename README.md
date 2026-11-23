@@ -8,12 +8,22 @@ Download the repository add-on ZIP:
 
 <https://tom-lei.github.io/kodi-repo/repository.tom-lei/repository.tom-lei-1.0.0.zip>
 
-In Kodi, install that downloaded ZIP using **Install from zip file**. The static
-index page links to the ZIP for browser downloads; the repository base URL is
-<https://tom-lei.github.io/kodi-repo/>.
+In Kodi, install that downloaded ZIP using **Install from zip file**, then
+choose **Install from repository → kodi-repo → Video add-ons → simpliTVᵀ**.
+The [download page](https://tom-lei.github.io/kodi-repo/) also links to the
+[simpliTVᵀ 2026.11.22 ZIP](https://tom-lei.github.io/kodi-repo/plugin.video.simplitv_t/plugin.video.simplitv_t-2026.11.22.zip).
 
-The catalogue initially contains only this repository add-on, so it can update
-itself. No video add-ons are published yet.
+## simpliTVᵀ 2026.11.22 notes
+
+- One enlarged-preview session on Windows exited with an unexplained crash
+  (`0xC0000005`); subsequent runs did not establish its cause or crash safety.
+- Unencrypted streams, Android, and LibreELEC have not been tested.
+- simpliTVᵀ is unofficial and based on the simpliTV add-on by Publish3r and
+  sunsettrack4. Its source, license and credits are included in the release ZIP.
+  The T-branded icon and fanart are derivatives of artwork included in the
+  [upstream GPLv3-or-later package](https://github.com/Publish3r/repository.kodi.matrix/tree/8a2e0597051d582f0dcb4df8ce8a66961725f964/plugin.video.simplitv).
+  No artwork exclusion was identified there; rights to third-party branding
+  and trademarks remain unverified. No affiliation or endorsement is implied.
 
 ## Publishing a separately released add-on
 

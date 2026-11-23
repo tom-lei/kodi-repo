@@ -38,7 +38,9 @@ class RepositoryBuildTests(unittest.TestCase):
                     },
                 )
                 manifest = archive.read("repository.tom-lei/addon.xml")
-            catalogued_manifest = builder.ElementTree.fromstring(catalogue)[0]
+            catalogued_manifest = builder.ElementTree.fromstring(catalogue).find(
+                "./addon[@id='repository.tom-lei']"
+            )
             packaged_manifest = builder.ElementTree.fromstring(manifest)
             self.assertEqual(catalogued_manifest.attrib, packaged_manifest.attrib)
             self.assertEqual(catalogued_manifest.find("extension/dir/info").text, builder.BASE_URL + "addons.xml")
@@ -65,8 +67,11 @@ class RepositoryBuildTests(unittest.TestCase):
             with zipfile.ZipFile(package_path, "w") as archive:
                 archive.writestr(
                     "plugin.video.example/addon.xml",
-                    '<addon id="plugin.video.example" name="Example" version="2.3.4"/>',
+                    '<addon id="plugin.video.example" name="Example" version="2.3.4">'
+                    '<extension point="xbmc.addon.metadata"><assets><icon>icon.png</icon>'
+                    '</assets></extension></addon>',
                 )
+                archive.writestr("plugin.video.example/icon.png", b"test icon")
             package_bytes = package_path.read_bytes()
             previous_package_dir = builder.PACKAGE_DIR
             builder.PACKAGE_DIR = packages
@@ -84,6 +89,7 @@ class RepositoryBuildTests(unittest.TestCase):
             )
             addon_ids = [addon.get("id") for addon in builder.ElementTree.parse(output / "addons.xml").getroot()]
             self.assertIn("plugin.video.example", addon_ids)
+            self.assertEqual((output / "plugin.video.example" / "icon.png").read_bytes(), b"test icon")
 
 
 if __name__ == "__main__":
