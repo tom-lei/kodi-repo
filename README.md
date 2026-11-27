@@ -23,6 +23,14 @@ to resolve add-on dependencies. The repository add-on ZIPs are in
 - 3proxy and Linux PCRE2 are downloaded at runtime with verification; see the
   included third-party notices and service disclosures.
 
+## simpliTVᵀ 2026.11.27 notes
+
+- Improves channel switching, guide navigation, channel number input and
+  playback handoff; routes add-on HTTP requests through Kodi's configured proxy.
+- Checks Widevine with InputStream Helper and uses the device's local timezone.
+- 230 offline tests passed, with one skipped; this exact ZIP was not tested
+  in Kodi. See the included changelog for details.
+
 ## simpliTVᵀ 2026.11.23.3 notes
 
 - Includes guide-background and recovery-menu fixes, plus programme-jump
