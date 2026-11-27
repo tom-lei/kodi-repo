@@ -14,7 +14,7 @@ from xml.etree import ElementTree
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://tom-lei.github.io/kodi-repo/"
 REPOSITORY_ID = "repository.tom-lei"
-REPOSITORY_VERSION = "1.0.0"
+REPOSITORY_VERSION = "2026.11.27"
 REPOSITORY_DIR = ROOT / REPOSITORY_ID
 PACKAGE_DIR = ROOT / "packages"
 
@@ -35,16 +35,12 @@ def parse_addon(xml_bytes: bytes, source: str) -> tuple[str, str, str]:
 
 
 def make_repository_zip() -> bytes:
-    files = (
-        (f"{REPOSITORY_ID}/addon.xml", (REPOSITORY_DIR / "addon.xml").read_bytes()),
-        (f"{REPOSITORY_ID}/LICENSE", (REPOSITORY_DIR / "LICENSE").read_bytes()),
-        (f"{REPOSITORY_ID}/README.md", (REPOSITORY_DIR / "README.md").read_bytes()),
-    )
+    filenames = ("addon.xml", "LICENSE", "README.md", "changelog.txt")
     buffer = io.BytesIO()
-    with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        for filename, contents in files:
-            entry = zipfile.ZipInfo(filename, date_time=(2020, 1, 1, 0, 0, 0))
-            entry.compress_type = zipfile.ZIP_DEFLATED
+    with zipfile.ZipFile(buffer, "w") as archive:
+        for filename in filenames:
+            contents = (REPOSITORY_DIR / filename).read_bytes().replace(b"\r\n", b"\n")
+            entry = zipfile.ZipInfo(f"{REPOSITORY_ID}/{filename}", date_time=(2020, 1, 1, 0, 0, 0))
             entry.external_attr = 0o100644 << 16
             archive.writestr(entry, contents)
     return buffer.getvalue()
@@ -163,7 +159,7 @@ def make_index(packages: dict[tuple[str, str], tuple[bytes, bytes]]) -> bytes:
 <body>
   <main>
     <h1>kodi-repo</h1>
-    <p>Download this repository ZIP, then install it in Kodi using <strong>Install from zip file</strong>:</p>
+    <p>Private archive only. The configured repository feed is offline; install add-on ZIPs manually.</p>
     <p><a href="{REPOSITORY_ID}/{REPOSITORY_ID}-{REPOSITORY_VERSION}.zip">repository.tom-lei-{REPOSITORY_VERSION}.zip</a></p>
     <p>Catalogue:</p>
     <ul>{package_list}</ul>

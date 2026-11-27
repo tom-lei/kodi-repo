@@ -1,0 +1,7 @@
+v2026.11.27
+- Adopt date-based versioning for the repository add-on.
+- Include this version history and preserve the original installer for updates.
+- Retain the former catalogue URLs; the private repository has no active feed.
+
+v1.0.0
+- Initial repository add-on with HTTPS catalogue and SHA-256 package hashes.
