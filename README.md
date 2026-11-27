@@ -13,6 +13,16 @@ use **Install from zip file**. Kodi may need its official repository enabled
 to resolve add-on dependencies. The repository add-on ZIPs are in
 `site/repository.tom-lei/` but their configured feed is unavailable.
 
+## DDNS Proxyᵀ 2026.11.27.1 notes
+
+- Offers authenticated proxy access, DDNS providers, port mapping, diagnostics,
+  optional shared-port mode, bandwidth statistics and certificate guidance.
+- Outbound Kodi HTTPS proxy settings are unsupported and fail closed.
+  LibreELEC hardware/shared-port mode and Android have not been tested.
+  Manual alternate-port mappings require clients to adjust their port.
+- 3proxy and Linux PCRE2 are downloaded at runtime with verification; see the
+  included third-party notices and service disclosures.
+
 ## simpliTVᵀ 2026.11.23.3 notes
 
 - Includes guide-background and recovery-menu fixes, plus programme-jump
