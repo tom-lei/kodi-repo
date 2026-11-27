@@ -1,16 +1,19 @@
-# kodi-repo
+# kodi-repo-t
 
 Kodi add-on repository: <https://tom-lei.github.io/kodi-repo/>.
 
 ## Install
 
-Download the [repository installer ZIP](https://tom-lei.github.io/kodi-repo/repository.tom-lei-2026.11.27.1.zip)
+Download the [repository installer ZIP](https://tom-lei.github.io/kodi-repo/repository.tom-lei-2026.11.27.2.zip)
 or add `https://tom-lei.github.io/kodi-repo/` as a Kodi file source. Install
 the ZIP in Kodi using **Install from zip file**. Then choose **Install
-from repository → kodi-repo** and select an add-on. Kodi may need its official
+from repository → kodi-repo-t** and select an add-on. Kodi may need its official
 repository enabled to resolve add-on dependencies. The
 [download page](https://tom-lei.github.io/kodi-repo/) also links to individual
 versioned ZIPs for manual installation.
+
+Existing installations retain their add-on ID and feed URL and can receive the
+renamed repository as an update. Previous installer URLs remain available.
 
 ## DDNS Proxyᵀ 2026.11.27.1 notes
 

@@ -46,9 +46,10 @@ class RepositoryBuildTests(unittest.TestCase):
             )
             packaged_manifest = builder.ElementTree.fromstring(manifest)
             self.assertEqual(catalogued_manifest.attrib, packaged_manifest.attrib)
+            self.assertEqual(packaged_manifest.get("name"), "kodi-repo-t")
+            self.assertEqual(packaged_manifest.find("extension").get("name"), "kodi-repo-t")
             self.assertEqual(catalogued_manifest.find("extension/dir/info").text, builder.BASE_URL + "addons.xml")
             self.assertEqual(catalogued_manifest.find("extension/dir/checksum").get("verify"), "sha256")
-            self.assertIn(b"Install repository", (output / "index.html").read_bytes())
 
     def test_kodi_http_directory_lists_root_installer(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -83,17 +84,20 @@ class RepositoryBuildTests(unittest.TestCase):
                 addon.get("version"): addon
                 for addon in root.findall("./addon[@id='repository.tom-lei']")
             }
-            self.assertIn("1.0.0", manifests)
-            self.assertIn("2026.11.27", manifests)
-            self.assertIn(builder.REPOSITORY_VERSION, manifests)
+            self.assertEqual(set(manifests), {builder.REPOSITORY_VERSION})
+            with zipfile.ZipFile(old_path) as archive:
+                old_manifest = builder.ElementTree.fromstring(archive.read("repository.tom-lei/addon.xml"))
             self.assertEqual(
-                manifests["1.0.0"].findtext("extension/dir/info"),
+                old_manifest.findtext("extension/dir/info"),
                 manifests[builder.REPOSITORY_VERSION].findtext("extension/dir/info"),
             )
-            self.assertIn(
-                f"repository.tom-lei-{builder.REPOSITORY_VERSION}.zip",
-                (output / "index.html").read_text(encoding="utf-8"),
-            )
+            page = (output / "index.html").read_text(encoding="utf-8")
+            self.assertIn(f"repository.tom-lei-{builder.REPOSITORY_VERSION}.zip", page)
+            self.assertNotIn('href="repository.tom-lei/repository.tom-lei-', page)
+            self.assertNotIn("Install repository (", page)
+            for version in ("1.0.0", "2026.11.27", "2026.11.27.1"):
+                old = output / "repository.tom-lei" / f"repository.tom-lei-{version}.zip"
+                self.assertTrue(old.is_file())
 
     def test_repository_zip_is_stable_across_checkout_line_endings(self):
         with tempfile.TemporaryDirectory() as temporary:

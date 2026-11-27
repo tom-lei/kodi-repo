@@ -1,3 +1,7 @@
+v2026.11.27.2
+- Rename the Kodi-visible repository to kodi-repo-t without changing its ID or feed URLs.
+- Keep the current repository version in the catalogue for automatic updates, while removing the redundant installer-version list from the download page.
+
 v2026.11.27.1
 - Restore the HTTPS repository feed and automatic updates via GitHub Pages.
 

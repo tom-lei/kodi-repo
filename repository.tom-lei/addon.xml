@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="repository.tom-lei"
-       name="kodi-repo"
-       version="2026.11.27.1"
+       name="kodi-repo-t"
+       version="2026.11.27.2"
        provider-name="tom-lei">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
   </requires>
-  <extension point="xbmc.addon.repository" name="kodi-repo">
+  <extension point="xbmc.addon.repository" name="kodi-repo-t">
     <dir>
       <info compressed="false">https://tom-lei.github.io/kodi-repo/addons.xml</info>
       <checksum verify="sha256">https://tom-lei.github.io/kodi-repo/addons.xml.sha256</checksum>
@@ -22,6 +22,6 @@
     <source>https://github.com/tom-lei/kodi-repo</source>
     <website>https://tom-lei.github.io/kodi-repo/</website>
     <email></email>
-    <news>Restore the HTTPS repository feed and automatic updates.</news>
+    <news>Rename the repository to kodi-repo-t and simplify its download page.</news>
   </extension>
 </addon>

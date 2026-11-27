@@ -14,7 +14,7 @@ from xml.etree import ElementTree
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://tom-lei.github.io/kodi-repo/"
 REPOSITORY_ID = "repository.tom-lei"
-REPOSITORY_VERSION = "2026.11.27.1"
+REPOSITORY_VERSION = "2026.11.27.2"
 REPOSITORY_DIR = ROOT / REPOSITORY_ID
 PACKAGE_DIR = ROOT / "packages"
 
@@ -122,8 +122,8 @@ def build(output: Path) -> None:
         parsed_id, parsed_version, _ = parse_addon(addon_xml, f"{addon_id} {version}")
         if (parsed_id, parsed_version) != (addon_id, version):
             raise ValueError(f"package metadata mismatch for {addon_id} {version}")
-        addon_element = ElementTree.fromstring(addon_xml)
-        addons.append(addon_element)
+        if addon_id != REPOSITORY_ID or version == REPOSITORY_VERSION:
+            addons.append(ElementTree.fromstring(addon_xml))
         filename = f"{addon_id}-{version}.zip"
         relative = Path(addon_id) / filename
         write_bytes(output / relative, package_bytes)
@@ -147,7 +147,9 @@ def build(output: Path) -> None:
 def make_index(packages: dict[tuple[str, str], tuple[bytes, bytes]]) -> bytes:
     links = []
     for (addon_id, version), _ in sorted(packages.items()):
-        label = "Install repository" if addon_id == REPOSITORY_ID else f"Download {addon_id} {version}"
+        if addon_id == REPOSITORY_ID:
+            continue
+        label = f"Download {addon_id} {version}"
         href = f"{html.escape(addon_id)}/{html.escape(addon_id)}-{html.escape(version)}.zip"
         links.append(f'<li><a href="{href}">{html.escape(label)} ({html.escape(version)})</a></li>')
     package_list = "\n".join(links)
@@ -156,11 +158,11 @@ def make_index(packages: dict[tuple[str, str], tuple[bytes, bytes]]) -> bytes:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>kodi-repo</title>
+  <title>kodi-repo-t</title>
 </head>
 <body>
   <main>
-    <h1>kodi-repo</h1>
+    <h1>kodi-repo-t</h1>
     <p>Install this repository ZIP in Kodi to browse add-ons and receive updates.</p>
     <p><a href="{REPOSITORY_ID}-{REPOSITORY_VERSION}.zip">{REPOSITORY_ID}-{REPOSITORY_VERSION}.zip</a></p>
     <p>Repository index: <a href="addons.xml">addons.xml</a>
