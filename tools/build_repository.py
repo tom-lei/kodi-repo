@@ -14,7 +14,7 @@ from xml.etree import ElementTree
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://tom-lei.github.io/kodi-repo/"
 REPOSITORY_ID = "repository.tom-lei"
-REPOSITORY_VERSION = "2026.11.27"
+REPOSITORY_VERSION = "2026.11.27.1"
 REPOSITORY_DIR = ROOT / REPOSITORY_ID
 PACKAGE_DIR = ROOT / "packages"
 
@@ -159,7 +159,7 @@ def make_index(packages: dict[tuple[str, str], tuple[bytes, bytes]]) -> bytes:
 <body>
   <main>
     <h1>kodi-repo</h1>
-    <p>Private archive only. The configured repository feed is offline; install add-on ZIPs manually.</p>
+    <p>Install this repository ZIP in Kodi to browse add-ons and receive updates.</p>
     <p><a href="{REPOSITORY_ID}/{REPOSITORY_ID}-{REPOSITORY_VERSION}.zip">repository.tom-lei-{REPOSITORY_VERSION}.zip</a></p>
     <p>Catalogue:</p>
     <ul>{package_list}</ul>

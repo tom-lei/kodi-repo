@@ -66,6 +66,7 @@ class RepositoryBuildTests(unittest.TestCase):
                 for addon in root.findall("./addon[@id='repository.tom-lei']")
             }
             self.assertIn("1.0.0", manifests)
+            self.assertIn("2026.11.27", manifests)
             self.assertIn(builder.REPOSITORY_VERSION, manifests)
             self.assertEqual(
                 manifests["1.0.0"].findtext("extension/dir/info"),

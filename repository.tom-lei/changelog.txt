@@ -1,3 +1,6 @@
+v2026.11.27.1
+- Restore the HTTPS repository feed and automatic updates via GitHub Pages.
+
 v2026.11.27
 - Adopt date-based versioning for the repository add-on.
 - Include this version history and preserve the original installer for updates.

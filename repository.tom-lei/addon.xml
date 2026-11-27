@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="repository.tom-lei"
        name="kodi-repo"
-       version="2026.11.27"
+       version="2026.11.27.1"
        provider-name="tom-lei">
   <requires>
     <import addon="xbmc.addon" version="12.0.0"/>
@@ -22,6 +22,6 @@
     <source>https://github.com/tom-lei/kodi-repo</source>
     <website>https://tom-lei.github.io/kodi-repo/</website>
     <email></email>
-    <news>Adopt date-based versioning and include the repository version history.</news>
+    <news>Restore the HTTPS repository feed and automatic updates.</news>
   </extension>
 </addon>
