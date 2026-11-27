@@ -30,6 +30,16 @@ versioned ZIPs for manual installation.
 - 230 offline tests passed, with one skipped; this exact ZIP was not tested
   in Kodi. See the included changelog for details.
 
+## Magenta TV ATᵀ 2026.11.27.5 notes
+
+- Improves guide responsiveness and Replay selection, caches Replay availability,
+  prefetches channel logos and retains TV static during playback startup.
+- Uses the last observed live buffer per station, or a two-hour estimate until
+  one is known. Playback still checks Magenta's offer and rights.
+- 452 offline tests passed. Guide navigation, Replay, live-buffer observations
+  and channel switching were exercised in Kodi on Windows using the source;
+  this exact ZIP has not been installed in Kodi.
+
 ## Magenta TV ATᵀ 2026.11.27.4 notes
 
 - Experimental add-on supporting Kodi's HTTPS and SOCKS proxies for provider

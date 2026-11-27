@@ -26,6 +26,33 @@
     </assets>
     <news>2026.11.27.4: Include the full GPLv3 license text. HTTPS and SOCKS proxies are supported with certificate verification and no direct fallback.</news>
   </extension>
+</addon><addon id="plugin.video.magentatv_at_t" name="Magenta TV ATᵀ" version="2026.11.27.5" provider-name="Tom, Publish3r, sunsettrack4">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="inputstream.adaptive" />
+    <import addon="script.module.inputstreamhelper" version="0.8.6" />
+    <import addon="script.module.pycryptodome" version="3.4.3" />
+    <import addon="script.module.urllib3" version="2.2.3" />
+    <import addon="script.module.pysocks" version="1.7.0+matrix.1" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Experimental Magenta TV Austria live playback</summary>
+    <summary lang="de_DE">Experimentelle Magenta TV Österreich Live-Wiedergabe</summary>
+    <description lang="en_GB">Unofficial and experimental. Sign-in, ORF 1 live playback, the programme guide, channel switching and basic seeking were verified in isolated Kodi testing. Shutdown can still stall intermittently. Credits: based on simpliTVᵀ by Tom and the simpliTV add-on by Publish3r and sunsettrack4. The Magenta channel-list and licence-request approach follows Ultimate Backend (script.service.ultimate) by Nirvana, https://github.com/nirvana-7777/script.service.ultimate. Ultimate Backend's authors do not endorse this add-on.</description>
+    <description lang="de_DE">Inoffiziell und experimentell. Anmeldung, ORF 1 Live-Wiedergabe, TV-Guide, Senderwechsel und einfaches Spulen wurden in einer isolierten Kodi-Umgebung geprüft. Das Beenden kann weiterhin gelegentlich hängen bleiben. Basierend auf simpliTVᵀ von Tom und dem simpliTV-Add-on von Publish3r und sunsettrack4. Der Ansatz für Magenta-Senderliste und Lizenzanfrage folgt Ultimate Backend (script.service.ultimate) von Nirvana, https://github.com/nirvana-7777/script.service.ultimate. Dessen Autoren unterstützen dieses Add-on nicht.</description>
+    <disclaimer lang="en_GB">Unofficial add-on; not affiliated with Magenta TV.</disclaimer>
+    <disclaimer lang="de_DE">Inoffizielles Add-on; keine Verbindung zu Magenta TV.</disclaimer>
+    <license>GPL-3.0-or-later</license>
+    <platform>all</platform>
+    <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.png</fanart>
+    </assets>
+    <news>2026.11.27.5: Improve guide responsiveness and Replay, cache availability and channel logos, and use observed live-buffer durations for start-over.</news>
+  </extension>
 </addon><addon id="plugin.video.simplitv_t" name="simpliTVᵀ" version="2026.11.22" provider-name="Tom, Publish3r, sunsettrack4">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
