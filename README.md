@@ -31,6 +31,18 @@ to resolve add-on dependencies. The repository add-on ZIPs are in
 - 230 offline tests passed, with one skipped; this exact ZIP was not tested
   in Kodi. See the included changelog for details.
 
+## Magenta TV ATᵀ 2026.11.27.4 notes
+
+- Experimental add-on supporting Kodi's HTTPS and SOCKS proxies for provider
+  requests with certificate verification and no direct fallback.
+- Includes the full GPLv3 license text and upstream attribution. The user
+  confirmed permission to redistribute the underlying Telekom tile; this
+  package is stored privately for personal use.
+- 427 offline tests and Python 3.8 syntax checks passed for the release work;
+  HTTPS/SOCKS support has not been tested with a live Kodi/provider session or
+  installed PySocks. Kodi Omega's bundled PyCryptodome and the official
+  repository's remaining dependencies are required.
+
 ## simpliTVᵀ 2026.11.23.3 notes
 
 - Includes guide-background and recovery-menu fixes, plus programme-jump
