@@ -1,5 +1,6 @@
 import hashlib
 import importlib.util
+import re
 import tempfile
 import unittest
 import zipfile
@@ -48,6 +49,20 @@ class RepositoryBuildTests(unittest.TestCase):
             self.assertEqual(catalogued_manifest.find("extension/dir/info").text, builder.BASE_URL + "addons.xml")
             self.assertEqual(catalogued_manifest.find("extension/dir/checksum").get("verify"), "sha256")
             self.assertIn(b"Install repository", (output / "index.html").read_bytes())
+
+    def test_kodi_http_directory_lists_root_installer(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            builder.build(output)
+            page = (output / "index.html").read_text(encoding="utf-8")
+            links = re.findall(r'<a href="([^"]*)"[^>]*>\s*(.*?)\s*</a>(.+?)(?=<a|</tr|$)',
+                               page, flags=re.IGNORECASE | re.DOTALL)
+            filename = f"{builder.REPOSITORY_ID}-{builder.REPOSITORY_VERSION}.zip"
+            self.assertIn((filename, filename), [(href, label) for href, label, _ in links])
+            self.assertEqual(
+                (output / filename).read_bytes(),
+                (output / builder.REPOSITORY_ID / filename).read_bytes(),
+            )
 
     def test_existing_repository_installer_remains_available_for_updates(self):
         with tempfile.TemporaryDirectory() as temporary:

@@ -4,8 +4,9 @@ Kodi add-on repository: <https://tom-lei.github.io/kodi-repo/>.
 
 ## Install
 
-Download the [repository installer ZIP](https://tom-lei.github.io/kodi-repo/repository.tom-lei/repository.tom-lei-2026.11.27.1.zip)
-and install it in Kodi using **Install from zip file**. Then choose **Install
+Download the [repository installer ZIP](https://tom-lei.github.io/kodi-repo/repository.tom-lei-2026.11.27.1.zip)
+or add `https://tom-lei.github.io/kodi-repo/` as a Kodi file source. Install
+the ZIP in Kodi using **Install from zip file**. Then choose **Install
 from repository → kodi-repo** and select an add-on. Kodi may need its official
 repository enabled to resolve add-on dependencies. The
 [download page](https://tom-lei.github.io/kodi-repo/) also links to individual

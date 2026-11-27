@@ -127,6 +127,8 @@ def build(output: Path) -> None:
         filename = f"{addon_id}-{version}.zip"
         relative = Path(addon_id) / filename
         write_bytes(output / relative, package_bytes)
+        if addon_id == REPOSITORY_ID:
+            write_bytes(output / filename, package_bytes)
         write_package_artwork(output, addon_id, package_bytes, addon_xml)
         write_bytes(
             output / f"{relative}.sha256",
@@ -160,7 +162,7 @@ def make_index(packages: dict[tuple[str, str], tuple[bytes, bytes]]) -> bytes:
   <main>
     <h1>kodi-repo</h1>
     <p>Install this repository ZIP in Kodi to browse add-ons and receive updates.</p>
-    <p><a href="{REPOSITORY_ID}/{REPOSITORY_ID}-{REPOSITORY_VERSION}.zip">repository.tom-lei-{REPOSITORY_VERSION}.zip</a></p>
+    <p><a href="{REPOSITORY_ID}-{REPOSITORY_VERSION}.zip">{REPOSITORY_ID}-{REPOSITORY_VERSION}.zip</a></p>
     <p>Catalogue:</p>
     <ul>{package_list}</ul>
     <p>See <a href="https://github.com/tom-lei/kodi-repo">installation and release notes</a>.</p>
