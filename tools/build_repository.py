@@ -163,6 +163,8 @@ def make_index(packages: dict[tuple[str, str], tuple[bytes, bytes]]) -> bytes:
     <h1>kodi-repo</h1>
     <p>Install this repository ZIP in Kodi to browse add-ons and receive updates.</p>
     <p><a href="{REPOSITORY_ID}-{REPOSITORY_VERSION}.zip">{REPOSITORY_ID}-{REPOSITORY_VERSION}.zip</a></p>
+    <p>Repository index: <a href="addons.xml">addons.xml</a>
+    <a href="addons.xml.sha256">addons.xml.sha256</a></p>
     <p>Catalogue:</p>
     <ul>{package_list}</ul>
     <p>See <a href="https://github.com/tom-lei/kodi-repo">installation and release notes</a>.</p>

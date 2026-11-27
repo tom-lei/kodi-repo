@@ -58,7 +58,10 @@ class RepositoryBuildTests(unittest.TestCase):
             links = re.findall(r'<a href="([^"]*)"[^>]*>\s*(.*?)\s*</a>(.+?)(?=<a|</tr|$)',
                                page, flags=re.IGNORECASE | re.DOTALL)
             filename = f"{builder.REPOSITORY_ID}-{builder.REPOSITORY_VERSION}.zip"
-            self.assertIn((filename, filename), [(href, label) for href, label, _ in links])
+            listed = {(href, label) for href, label, _ in links}
+            for name in (filename, "addons.xml", "addons.xml.sha256"):
+                self.assertIn((name, name), listed)
+                self.assertTrue((output / name).is_file())
             self.assertEqual(
                 (output / filename).read_bytes(),
                 (output / builder.REPOSITORY_ID / filename).read_bytes(),
