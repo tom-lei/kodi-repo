@@ -15,6 +15,12 @@ versioned ZIPs for manual installation.
 Existing installations retain their add-on ID and feed URL and can receive the
 renamed repository as an update. Previous installer URLs remain available.
 
+## DDNS Proxyᵀ 2026.11.28.2 notes
+
+- Documentation-only update to the bundled README: TLS-only internet setup,
+  on-disk password storage, DDNS background updates versus Test now and
+  Diagnostics, and IPv4 TCP port-check limits. No proxy behavior changes.
+
 ## DDNS Proxyᵀ 2026.11.28.1 notes
 
 - Documentation-only update to the bundled README: allow-list syntax, built-in

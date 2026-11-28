@@ -225,4 +225,31 @@ v2026.11.26 - initial version</news>
       <fanart>resources/fanart.jpg</fanart>
     </assets>
   </extension>
+</addon><addon id="service.ddnsproxy_t" name="DDNS Proxyᵀ" version="2026.11.28.2" provider-name="tom-lei">
+  <requires>
+    <import addon="xbmc.python" version="3.0.1" />
+  </requires>
+  <extension point="xbmc.service" library="service.py" />
+  <extension point="xbmc.python.script" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Authenticated web proxy with dynamic DNS, run by Kodi</summary>
+    <description lang="en_GB">DDNS Proxyᵀ turns your Kodi device into a small, password-protected forward proxy (HTTP/HTTPS, optional SOCKS5 and TLS) that is reachable from the internet through a dynamic DNS hostname. It downloads and verifies the 3proxy engine, keeps your DDNS records (No-IP, DuckDNS, Dynu, deSEC, Cloudflare, FreeDNS, any dyndns2 service) up to date, can open the port on your router (UPnP/NAT-PMP/PCP) and offers diagnostics including an external port check. Only public internet destinations are reachable through the proxy; your home network stays protected.</description>
+    <disclaimer lang="en_GB">You are responsible for securing the proxy. Use a strong password and prefer the TLS listener.</disclaimer>
+    <platform>all</platform>
+    <license>MIT</license>
+    <source>https://github.com/tom-lei/service.ddnsproxy_t</source>
+    <news>v2026.11.28.2 - clarify TLS setup, password storage, DDNS tests and external port checks in the README; no proxy behavior changes
+v2026.11.28.1 - document destination allow-list syntax, built-in blocks and invalid entries in the included README; no proxy behavior changes
+v2026.11.28 - clearer Diagnostics summary, consistent internet-check consent and smoother settings navigation; DDNS host 2 appears when host 1 is enabled
+v2026.11.27.2 - proxy password entered unmasked in settings and shown in Diagnostics
+v2026.11.27.1 - client setup and internet checks use router-assigned external ports; bandwidth statistics accessible under Tools; clarified external-service disclosure and unsupported Kodi HTTPS proxy type
+v2026.11.27 - home address from the router (NAT-PMP/UPnP); DDNS never publishes Kodi's network proxy address; LibreELEC PCRE2 support; automatic device/router/internet diagnostics; optional shared TCP port; per-client bandwidth statistics; HTTPS certificate guidance and public certificate export
+v2026.11.26 - initial version</news>
+    <assets>
+      <icon>resources/icon.png</icon>
+      <fanart>resources/fanart.jpg</fanart>
+    </assets>
+  </extension>
 </addon></addons>
