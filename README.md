@@ -15,6 +15,12 @@ versioned ZIPs for manual installation.
 Existing installations retain their add-on ID and feed URL and can receive the
 renamed repository as an update. Previous installer URLs remain available.
 
+## DDNS Proxyᵀ 2026.11.28.3 notes
+
+- Removes password policy limits (only the 254-byte user:password maximum
+  remains), clarifies NAT-loopback diagnostics and fixes Windows non-ASCII
+  paths.
+
 ## DDNS Proxyᵀ 2026.11.28.2 notes
 
 - Documentation-only update to the bundled README: TLS-only internet setup,
