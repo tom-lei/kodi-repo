@@ -15,6 +15,13 @@ versioned ZIPs for manual installation.
 Existing installations retain their add-on ID and feed URL and can receive the
 renamed repository as an update. Previous installer URLs remain available.
 
+## DDNS Proxyᵀ 2026.11.28 notes
+
+- Shows the proxy password on screen, returns to settings (Proxy category)
+  after actions, and keeps the main menu open after network errors.
+- Adds concise local/external Diagnostics, a standalone check confirmation,
+  and conceals unused DDNS 2.
+
 ## DDNS Proxyᵀ 2026.11.27.1 notes
 
 - Offers authenticated proxy access, DDNS providers, port mapping, diagnostics,
