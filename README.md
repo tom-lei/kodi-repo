@@ -15,6 +15,11 @@ versioned ZIPs for manual installation.
 Existing installations retain their add-on ID and feed URL and can receive the
 renamed repository as an update. Previous installer URLs remain available.
 
+## DDNS Proxyᵀ 2026.11.28.1 notes
+
+- Documentation-only update to the bundled README: allow-list syntax, built-in
+  blocks and the all-invalid allow-list case. No proxy behavior changes.
+
 ## DDNS Proxyᵀ 2026.11.28 notes
 
 - Shows the proxy password on screen, returns to settings (Proxy category)
